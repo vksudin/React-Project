@@ -1,0 +1,49 @@
+function LCS(s1,s2,m,n){
+    let arr=new Array(m+1);
+    let len=0;
+    let r=0,c=0;
+    for(let i=0;i<=m;i++){
+        arr[i]=Array(n+1);
+        for(let j=0;j<=n;j++)
+        {
+            arr[i][j]=0;
+            if(i==0 || j==0)
+            {
+                arr[i][j]=0;
+            }
+            else if(s1[i-1]==s2[j-1])
+            {
+                arr[i][j]=arr[i-1][j-1]+1;
+                if(len<arr[i][j])
+                {
+                    len=arr[i][j];
+                    row=i;
+                    col=j;
+                }
+            }
+            else
+            {
+                arr[i][j]=0;
+            }
+        }
+    }
+   if(len==0)
+   {
+       document.write("NO substring found");
+       return;
+   }
+   let res="";
+   while(arr[r][c]!=0)
+   {
+       res=s1[r-1]+res;
+       len--;
+       r--;
+       c--;
+   }
+   document.write(res);
+}
+var s1="abcd";
+var s2="abcf";
+var m=s1.length;
+var n=s2.length;
+LCS(s1,s2,m,n);
