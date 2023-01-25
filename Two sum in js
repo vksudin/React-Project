@@ -1,0 +1,25 @@
+const twoSum=function(nums,target){
+    let n=nums.length;
+    let f=false;
+    let l=[];
+    for(let i=0;i<n;i++){
+        for(let j=i+1;j<n;j++){
+            if((nums[i]+nums[j])==target){
+                l.push(i);
+                l.push(j);
+                f=true;
+                break;
+            }
+        }
+        if(f==true)break;
+    }
+    return l;
+}
+
+var arr=[1,2,3,4];
+var target=3;
+let l=twoSum(arr,target);
+for(let i=0;i<l.length;i++)
+{
+    console.log(l[i]);
+}
